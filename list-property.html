@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>List Property | QuickRent</title>
+  <link rel="stylesheet" href="list-property.css">
+</head>
+<body>
+  <h1>List Your Property</h1>
+  <form id="propertyListingForm">
+    <input type="text" id="title" placeholder="Property Title" required><br>
+    <input type="text" id="type" placeholder="Type (e.g. PG, Hostel)" required><br>
+    <input type="text" id="location" placeholder="Location" required><br>
+    <input type="number" id="price" placeholder="Price" required><br>
+    <input type="text" id="period" placeholder="Period (e.g. Monthly)" required><br>
+    <input type="text" id="area" placeholder="Area (sqft)" required><br>
+    <input type="text" id="furnished" placeholder="Furnished (Yes/No)" required><br>
+    <input type="number" id="deposit" placeholder="Deposit Amount" required><br>
+    <textarea id="description" placeholder="Property Description" required></textarea><br>
+    <input type="text" id="amenities" placeholder="Amenities (comma separated)" required><br>
+    <input type="text" id="features" placeholder="Features (comma separated)" required><br>
+    <input type="text" id="ownerName" placeholder="Owner Name" required><br>
+    <input type="tel" id="ownerPhone" placeholder="Owner Phone" required><br>
+    <input type="file" id="propertyImages" accept="image/*" required><br>
+    <button type="submit">Submit Property</button>
+  </form>
+
+  <script>
+    document.getElementById("propertyListingForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const imageInput = document.getElementById("propertyImages");
+      const imageFile = imageInput.files[0];
+
+      if (!imageFile) {
+        alert("Please select an image.");
+        return;
+      }
+
+      const reader = new FileReader();
+
+      reader.onload = async function(event) {
+        const property = {
+          title: document.getElementById("title").value,
+          type: document.getElementById("type").value,
+          location: document.getElementById("location").value,
+          price: parseInt(document.getElementById("price").value),
+          period: document.getElementById("period").value,
+          area: document.getElementById("area").value,
+          furnished: document.getElementById("furnished").value,
+          deposit: parseInt(document.getElementById("deposit").value),
+          description: document.getElementById("description").value,
+          amenities: document.getElementById("amenities").value.split(",").map(a => a.trim()),
+          features: document.getElementById("features").value.split(",").map(f => f.trim()),
+          ownerName: document.getElementById("ownerName").value,
+          ownerPhone: document.getElementById("ownerPhone").value,
+          image: event.target.result // base64 string
+        };
+
+        try {
+          const response = await fetch("http://localhost:3000/api/properties", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(property)
+          });
+
+          const result = await response.json();
+
+          if (response.ok) {
+            alert("✅ Property submitted successfully!");
+            document.getElementById("propertyListingForm").reset();
+          } else {
+            alert("❌ Submission failed: " + result.error);
+          }
+        } catch (error) {
+          console.error("Error submitting property:", error);
+          alert("❌ Failed to submit property.");
+        }
+      };
+
+      reader.readAsDataURL(imageFile);
+    });
+  </script>
+</body>
+</html>

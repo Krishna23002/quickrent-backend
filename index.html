@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>QuickRent</title>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <h1><a href="index.html">QuickRent</a></h1>
+      <div class="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="about.html">Properties</a>
+          <ul class="dropdown-menu">
+            <li><a href="pg.html">PG</a></li>
+            <li><a href="hostel.html">Hostel</a></li>
+            <li><a href="room.html">Room</a></li>
+            <li><a href="house.html">House</a></li>
+          </ul>
+        </li>
+        <li><a href="#how-it-works">How it Works</a></li>
+        <li><a href="list-property.html">List Property</a></li>
+        <div>
+          <button id="loginBtn" class="login">Login</button>
+          <button id="logoutBtn" class="login">Logout</button>
+          <span id="userName"></span>
+        </div>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero-section">
+    <div class="hero-content">
+    <h1>Find Your Perfect Rental Property in India</h1>
+    <p>Discover quality accommodations from verified property owners across 50+ accommodations and 100,000+ rental properties</p></div>
+    <form>
+      <i class="fas fa-map-marker-alt"></i><input type="text" placeholder="Enter City, Locality or Project Name" id="searchInput">
+      <button type="submit"><i class="fas fa-search"></i>Search</button>
+    </form>
+  </section>
+
+    <section class="stats-section">
+      <div class="stats-container">
+        <div class="stat-box">
+          <h3 class="stat-number">25,000+</h3>
+          <p class="stat-label">Rental Properties</p>
+        </div>
+        <div class="stat-box">
+          <h3 class="stat-number">50+</h3>
+          <p class="stat-label">Cities</p>
+        </div>
+        <div class="stat-box">
+          <h3 class="stat-number">100,000+</h3>
+          <p class="stat-label">Happy Customers</p>
+        </div>
+        <div class="stat-box">
+          <h3 class="stat-number">4.8+</h3>
+          <p class="stat-label">Average Rating</p>
+        </div>
+      </div>
+    </section>
+
+  <section id="how-it-works" class="how-it-works clean-section">
+    <h2 class="section-title">How It Works</h2>
+    <div class="how-grid">
+      <div class="how-card">
+        <i class="fas fa-search-location"></i>
+        <h4>Search</h4>
+        <p>Find properties by city, locality, or project name effortlessly.</p>
+      </div>
+      <div class="how-card">
+        <i class="fas fa-list-alt"></i>
+        <h4>Explore</h4>
+        <p>Compare verified listings, prices, photos, and amenities.</p>
+      </div>
+      <div class="how-card">
+        <i class="fas fa-phone-alt"></i>
+        <h4>Connect</h4>
+        <p>Talk directly with property owners or managers—no brokers.</p>
+      </div>
+      <div class="how-card">
+        <i class="fas fa-home"></i>
+        <h4>Move In</h4>
+        <p>Visit, finalize the deal, and shift into your new place with ease.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <h2>Available Properties</h2>
+<div id="propertyList" class="property-container"></div>
+
+
+  <section class="property-section">
+    <div class="property-container">
+      <div class="section-header">
+        <h2>Browse by Category</h2>
+        <p>Find the perfect accommodation type for your needs</p>
+      </div>
+
+      <div class="category-grid">
+        <div class="category-card" data-category="rooms">
+          <div class="category-icon">
+            <i class="fas fa-house"></i>
+
+          </div>
+          <h4>House</h4>
+          <p>Independent houses offering full privacy, spacious living, and family-friendly amenities</p>
+          <small class="price">Starting from ₹12,000/month</small>
+        </div>
+
+        <!-- Rooms -->
+        <div class="category-card" data-category="rooms">
+          <div class="category-icon">
+            <i class="fas fa-door-open"></i>
+          </div>
+          <h4>Rooms</h4>
+          <p>Private rooms in shared apartments with modern amenities</p>
+          <small class="price">Starting from ₹8,000/month</small>
+        </div>
+
+        <!-- PG -->
+        <div class="category-card" data-category="pg">
+          <div class="category-icon">
+            <i class="fas fa-building"></i>
+          </div>
+          <h4>PG Accommodations</h4>
+          <p>Comfortable paying guest facilities with meals and services</p>
+          <small class="price">Starting from ₹6,000/month</small>
+        </div>
+
+        <!-- Hostels -->
+        <div class="category-card" data-category="hostels">
+          <div class="category-icon">
+            <i class="fas fa-university"></i>
+          </div>
+          <h4>Hostels</h4>
+          <p>Budget-friendly shared accommodations for students and professionals</p>
+          <small class="price">Starting from ₹3,000/month</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews-section">
+    <h2 class="section-title">What Our Users Say</h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <p>"QuickRent made my house-hunting so easy! Found a place in 2 days."</p>
+        <h4>- Priya S.</h4>
+      </div>
+      <div class="review-card">
+        <p>"Loved the no-broker policy. Straight talk with owners, no hassle!"</p>
+        <h4>- Ramesh K.</h4>
+      </div>
+      <div class="review-card">
+        <p>"The website is so smooth and intuitive. Great experience overall."</p>
+        <h4>- Anjali M.</h4>
+      </div>
+      <div class="review-card">
+        <p>"Found my PG in a new city within hours. Totally recommend!"</p>
+        <h4>- Shubham T.</h4>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="why-choose">
+    <div class="why-container">
+      <div class="why-header">
+        <h2>Why Choose QuickRent?</h2>
+      </div>
+      <div class="why-features">
+        <!-- Feature 1 -->
+        <div class="why-feature">
+          <i class="fas fa-shield-alt"></i>
+          <h4>Verified Properties</h4>
+          <p>All properties are verified by our team for authenticity and quality</p>
+        </div>
+        <!-- Feature 2 -->
+        <div class="why-feature">
+          <i class="fas fa-clock"></i>
+          <h4>Quick Booking</h4>
+          <p>Book your perfect rental in just a few clicks with instant confirmation</p>
+        </div>
+        <!-- Feature 3 -->
+        <div class="why-feature">
+          <i class="fas fa-headset"></i>
+          <h4>24/7 Support</h4>
+          <p>Round-the-clock customer support to help with all your rental needs</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h4 class="brand">QuickRent</h4>
+        <p>Your trusted platform for finding quality rental accommodations across India.</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-column QuickLinks">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#properties">Properties</a></li>
+          <li><a href="#rooms">Rooms</a></li>
+          <li><a href="#pg">PG</a></li>
+          <li><a href="#hostels">Hostels</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h5>Property Types</h5>
+        <ul>
+          <li><a href="#">Studio Apartments</a></li>
+          <li><a href="#">1 BHK</a></li>
+          <li><a href="#">2 BHK</a></li>
+          <li><a href="#">Shared Rooms</a></li>
+          <li><a href="#">Co-living Spaces</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h5>Contact Info</h5>
+        <p><i class="fas fa-envelope"></i> info@quickrent.com</p>
+        <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
+        <p><i class="fas fa-map-marker-alt"></i> Mumbai, Maharashtra, India</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2024 QuickRent. All rights reserved.</p>
+    </div>
+  </footer>
+  
+  <script type="module" src="script.js"></script>
+  <script>
+  async function loadProperties() {
+    try {
+      const res = await fetch("http://localhost:3000/api/properties");
+      const properties = await res.json();
+
+      const container = document.getElementById("propertyList");
+      container.innerHTML = "";
+
+      properties.forEach(property => {
+        const card = document.createElement("div");
+        card.classList.add("property-card");
+
+        card.innerHTML = `
+          <img src="${property.image}" alt="${property.title}" class="property-img"/>
+          <h3>${property.title}</h3>
+          <p><strong>Location:</strong> ${property.location}</p>
+          <p><strong>Price:</strong> ₹${property.price}</p>
+          <p><strong>Type:</strong> ${property.type}</p>
+          <p><strong>Area:</strong> ${property.area}</p>
+        `;
+
+        container.appendChild(card);
+      });
+    } catch (error) {
+      console.error("Error loading properties:", error);
+    }
+  }
+
+  window.onload = loadProperties;
+</script>
+
+
+
+</body>
+</html>
