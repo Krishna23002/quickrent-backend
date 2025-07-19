@@ -257,7 +257,7 @@
   <script>
   async function loadProperties() {
     try {
-      const res = await fetch("http://localhost:3000/api/properties");
+      const res = await fetch("https://quickrent-backend.onrender.com/api/properties");
       const properties = await res.json();
 
       const container = document.getElementById("propertyList");

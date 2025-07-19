@@ -1,16 +1,13 @@
-// ✅ Fully Integrated Login & Signup System
-// 📁 This code goes inside your <script> tag or external JS file (e.g., script.js)
+// ✅ Fully Integrated Login & Signup System (Updated for Deployment)
+// 📁 Place inside <script> tag or external JS file (script.js)
 
-// Toggle nav menu on small screens
 function toggleMenu() {
   const menu = document.querySelector("nav ul");
   menu.classList.toggle("show");
 }
 
-// Make toggleMenu globally available
 window.toggleMenu = toggleMenu;
 
-// Notification system
 function showNotification(message, type = 'success') {
   const existingNotification = document.querySelector('.notification');
   if (existingNotification) existingNotification.remove();
@@ -40,7 +37,6 @@ function hideNotification(notification) {
   }, 300);
 }
 
-// Login/Logout functionality
 document.addEventListener("DOMContentLoaded", () => {
   const loginBtn = document.getElementById("loginBtn");
   const logoutBtn = document.getElementById("logoutBtn");
@@ -146,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const password = document.getElementById("password").value;
 
       try {
-        const res = await fetch("http://localhost:3000/api/login", {
+        const res = await fetch("https://quickrent-backend.onrender.com/api/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, password })
@@ -175,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const phone = document.getElementById("signupPhone").value;
 
       try {
-        const res = await fetch("http://localhost:3000/api/signup", {
+        const res = await fetch("https://quickrent-backend.onrender.com/api/signup", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ name, email, password, phone })
