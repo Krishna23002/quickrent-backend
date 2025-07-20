@@ -1,3 +1,8 @@
+app.get("/", (req, res) => {
+  res.send("QuickRent backend is live ✅");
+});
+
+
 const bcrypt = require("bcrypt");
 const express = require("express");
 const mongoose = require("mongoose");

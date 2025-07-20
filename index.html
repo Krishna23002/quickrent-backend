@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,16 +9,17 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <title>QuickRent</title>
 </head>
+
 <body>
 
   <header>
     <nav>
       <h1><a href="index.html">QuickRent</a></h1>
       <div class="hamburger" onclick="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li class="dropdown">
@@ -42,34 +44,37 @@
 
   <section class="hero-section">
     <div class="hero-content">
-    <h1>Find Your Perfect Rental Property in India</h1>
-    <p>Discover quality accommodations from verified property owners across 50+ accommodations and 100,000+ rental properties</p></div>
+      <h1>Find Your Perfect Rental Property in India</h1>
+      <p>Discover quality accommodations from verified property owners across 50+ accommodations and 100,000+ rental
+        properties</p>
+    </div>
     <form>
-      <i class="fas fa-map-marker-alt"></i><input type="text" placeholder="Enter City, Locality or Project Name" id="searchInput">
+      <i class="fas fa-map-marker-alt"></i><input type="text" placeholder="Enter City, Locality or Project Name"
+        id="searchInput">
       <button type="submit"><i class="fas fa-search"></i>Search</button>
     </form>
   </section>
 
-    <section class="stats-section">
-      <div class="stats-container">
-        <div class="stat-box">
-          <h3 class="stat-number">25,000+</h3>
-          <p class="stat-label">Rental Properties</p>
-        </div>
-        <div class="stat-box">
-          <h3 class="stat-number">50+</h3>
-          <p class="stat-label">Cities</p>
-        </div>
-        <div class="stat-box">
-          <h3 class="stat-number">100,000+</h3>
-          <p class="stat-label">Happy Customers</p>
-        </div>
-        <div class="stat-box">
-          <h3 class="stat-number">4.8+</h3>
-          <p class="stat-label">Average Rating</p>
-        </div>
+  <section class="stats-section">
+    <div class="stats-container">
+      <div class="stat-box">
+        <h3 class="stat-number">25,000+</h3>
+        <p class="stat-label">Rental Properties</p>
       </div>
-    </section>
+      <div class="stat-box">
+        <h3 class="stat-number">50+</h3>
+        <p class="stat-label">Cities</p>
+      </div>
+      <div class="stat-box">
+        <h3 class="stat-number">100,000+</h3>
+        <p class="stat-label">Happy Customers</p>
+      </div>
+      <div class="stat-box">
+        <h3 class="stat-number">4.8+</h3>
+        <p class="stat-label">Average Rating</p>
+      </div>
+    </div>
+  </section>
 
   <section id="how-it-works" class="how-it-works clean-section">
     <h2 class="section-title">How It Works</h2>
@@ -97,9 +102,10 @@
     </div>
   </section>
 
-
-  <h2>Available Properties</h2>
-<div id="propertyList" class="property-container"></div>
+  <section class="property">
+    <h2>Available Properties</h2>
+    <div id="propertyList" class="property-box"></div>
+  </section>
 
 
   <section class="property-section">
@@ -252,22 +258,22 @@
       <p>&copy; 2024 QuickRent. All rights reserved.</p>
     </div>
   </footer>
-  
+
   <script type="module" src="script.js"></script>
   <script>
-  async function loadProperties() {
-    try {
-      const res = await fetch("https://quickrent-backend.onrender.com/api/properties");
-      const properties = await res.json();
+    async function loadProperties() {
+      try {
+        const res = await fetch("https://quickrent-backend.onrender.com/api/properties");
+        const properties = await res.json();
 
-      const container = document.getElementById("propertyList");
-      container.innerHTML = "";
+        const container = document.getElementById("propertyList");
+        container.innerHTML = "";
 
-      properties.forEach(property => {
-        const card = document.createElement("div");
-        card.classList.add("property-card");
+        properties.forEach(property => {
+          const card = document.createElement("div");
+          card.classList.add("property-card");
 
-        card.innerHTML = `
+          card.innerHTML = `
           <img src="${property.image}" alt="${property.title}" class="property-img"/>
           <h3>${property.title}</h3>
           <p><strong>Location:</strong> ${property.location}</p>
@@ -276,17 +282,18 @@
           <p><strong>Area:</strong> ${property.area}</p>
         `;
 
-        container.appendChild(card);
-      });
-    } catch (error) {
-      console.error("Error loading properties:", error);
+          container.appendChild(card);
+        });
+      } catch (error) {
+        console.error("Error loading properties:", error);
+      }
     }
-  }
 
-  window.onload = loadProperties;
-</script>
+    window.onload = loadProperties;
+  </script>
 
 
 
 </body>
+
 </html>
